@@ -1,8 +1,8 @@
-Horde-Git-Tools
-========================================
+Horde Git Tools
+===============
 
-POC/WIP toolchain for dealing with the upcoming split repository structure of
-[Horde](https://github.com/horde/horde)
+Toolchain for dealing with the split repository structure of
+[Horde](https://github.com/horde)
 
 Installation
 ------------
@@ -20,8 +20,7 @@ cp config/conf.php.dist config/conf.php
 Usage
 -----
 
-Current usage. Subject to change until code is finalized. Also see the
---help text.
+Also see the --help text.
 
 ```sh
 # The horde-git-tools command can be found at the horde-git-tools/bin directory.
@@ -65,8 +64,8 @@ horde-git-tools component /path/to/repository changed '[mjr] Some change'
 horde-git-tools component /path/to/repository release
 ```
 
-Still todo
-----------
+Still to do
+-----------
 
 -  Create install action that will perform a full pear install of the webmail or
    groupware bundle (or optionally a specified list of applications).
