@@ -31,7 +31,7 @@ $conf['verbose'] = false;
 /* Git related configuration */
 
 // Github organization to use for repositories
-$conf['org'] = 'horde-git-test';
+$conf['org'] = 'horde';
 
 // To use a "developer" checkout, use the 'git@github.com:' URI.
 // Otherwise, an anonymous clone will be done that cannot be pushed.
