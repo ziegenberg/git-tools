@@ -20,8 +20,8 @@
     "time": "2017-03-29",
     "repositories": [
         {
-            "type": "path",
-            "url": "../horde-git/components"
+            "type": "vcs",
+            "url": "https://github.com/horde/components"
         },
         {
             "type": "pear",
@@ -39,7 +39,7 @@
         "pear-pear.horde.org/Horde_Pear": "^1.0.0@dev",
         "pear-pear.horde.org/Horde_Translation": "^2.2.2",
         "pear-pear.horde.org/Horde_Yaml": "^2.0.6",
-        "horde/components": "*",
+        "horde/components": "dev-master",
         "pear/Archive_Tar": "^1.4.2",
         "pear/PEAR": "^1.10.0@dev"
     },

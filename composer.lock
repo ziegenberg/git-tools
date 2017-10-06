@@ -4,17 +4,22 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3cd31d52dc40ed762f5858f5174c907e",
-    "content-hash": "14b0931e019c840cd8f3c00b4c09b594",
+    "hash": "46af83bf40748771f8fe56f2e1235ae9",
+    "content-hash": "713a30caa251484da70328f063a3f4cf",
     "packages": [
         {
             "name": "horde/components",
-            "version": "0.99.1",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/horde/components.git",
+                "reference": "c908aaf9efb1009d4f40140031feaf95d8920c30"
+            },
             "dist": {
-                "type": "path",
-                "url": "../horde-git/components",
-                "reference": "892a6127fa5c950bb9fdb80b27b6dc61c3a181a4",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/horde/components/zipball/c908aaf9efb1009d4f40140031feaf95d8920c30",
+                "reference": "c908aaf9efb1009d4f40140031feaf95d8920c30",
+                "shasum": ""
             },
             "require": {
                 "pear-pear.horde.org/horde_argv": "*",
@@ -61,7 +66,10 @@
             ],
             "description": "A package for dealing with Horde components",
             "homepage": "https://pear.horde.org",
-            "time": "2016-06-28 00:00:00"
+            "support": {
+                "source": "https://github.com/horde/components/tree/master"
+            },
+            "time": "2017-09-07 13:25:14"
         },
         {
             "name": "pear-pear.horde.org/Horde_Alarm",
@@ -2326,6 +2334,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "pear-pear.horde.org/horde_pear": 20,
+        "horde/components": 20,
         "pear/pear": 20
     },
     "prefer-stable": false,

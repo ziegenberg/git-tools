@@ -7,10 +7,10 @@ Toolchain for dealing with the split repository structure of
 Installation
 ------------
 
-Uses composer for dependency management.
+Use Composer for dependency management. For instructions how to install
+Composer, see https://getcomposer.org/download/
 
 ```sh
-git clone --depth 1 https://github.com/horde/horde.git horde-git
 git clone https://github.com/horde/git-tools.git horde-git-tools
 cd horde-git-tools
 composer.phar install
