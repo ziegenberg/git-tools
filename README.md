@@ -17,6 +17,7 @@ composer.phar install
 cp config/conf.php.dist config/conf.php
 # Review config/conf.php and set values accordingly.
 ```
+
 Usage
 -----
 
