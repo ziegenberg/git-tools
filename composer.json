@@ -21,10 +21,6 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../horde-git/framework/*"
-        },
-        {
-            "type": "path",
             "url": "../horde-git/components"
         },
         {
@@ -34,18 +30,18 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "pear-pear.horde.org/Horde_Exception": "^2.0.0",
-        "pear-pear.horde.org/Horde_Translation": "^2.2.2",
-        "horde/horde-cli": "^2",
-        "horde/horde-cli-modular": "^2",
-        "horde/horde-argv": "^2",
-        "pear-pear.horde.org/Horde_Http": "^2",
+        "pear-pear.horde.org/Horde_Argv": "^2.1.0",
         "pear-pear.horde.org/Horde_Cache": "^2",
-        "horde/horde-pear": "*@dev",
+        "pear-pear.horde.org/Horde_Cli": "^2.2.0",
+        "pear-pear.horde.org/Horde_Cli_Modular": "^2.1.0",
+        "pear-pear.horde.org/Horde_Exception": "^2.0.0",
+        "pear-pear.horde.org/Horde_Http": "^2",
+        "pear-pear.horde.org/Horde_Pear": "^1.0.0@dev",
+        "pear-pear.horde.org/Horde_Translation": "^2.2.2",
+        "pear-pear.horde.org/Horde_Yaml": "^2.0.6",
         "horde/components": "*",
-        "pear/pear": "*@dev",
-        "pear/Archive_Tar": ">=1.4.2",
-        "horde/horde-yaml": "2.*"
+        "pear/Archive_Tar": "^1.4.2",
+        "pear/PEAR": "^1.10.0@dev"
     },
     "autoload": {
         "psr-4": {"Horde\\GitTools\\": "lib"}
