@@ -54,12 +54,12 @@ class LinkApps extends \Horde\GitTools\Action\Base
         );
 
         if (count($this->_params['apps'])) {
-            foreach ($this->_apps as $app) {
+            foreach ($this->_params['apps'] as $app) {
                 if ($app == 'horde') {
                     continue;
                 }
                 if (file_exists($horde_git . '/' . $app)) {
-                    $this->_linkApp($app);
+                    $this->_linkApp($app, $horde_git, $web_dir);
                 }
             }
         } else {
