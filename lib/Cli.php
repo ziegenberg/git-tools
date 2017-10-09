@@ -72,20 +72,25 @@ class Cli
      *
      * @param  Horde_Argv_Parser $parser  The parser.
      *
-     * @return \Component_Configs  The configuration helper.
+     * @return \Components_Configs  The configuration helper.
      */
     protected static function _prepareConfig(Parser $parser)
     {
         $config = new Configs();
+        $dir = getcwd();
+        while ($dir != '/' && !file_exists($dir . '/.horde-git-tools.php')) {
+            $dir = dirname($dir);
+        }
+        if (file_exists($dir . '/.horde-git-tools.php')) {
+            $config->addConfigurationType(
+                new Config_File($dir . '/.horde-git-tools.php')
+            );
+        }
         $config->addConfigurationType(
-            new Config\Cli(
-                $parser
-            )
+            new Config\Cli($parser)
         );
         $config->unshiftConfigurationType(
-            new Config_File(
-                $config->getOption('config')
-            )
+            new Config_File($config->getOption('config'))
         );
         return $config;
     }

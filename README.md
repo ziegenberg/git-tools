@@ -14,8 +14,32 @@ Composer, see https://getcomposer.org/download/
 git clone https://github.com/horde/git-tools.git horde-git-tools
 cd horde-git-tools
 composer.phar install
+```
+
+Configuration
+-------------
+
+The main configuration is done in the horde-git-tools/config/ directory:
+
+```sh
 cp config/conf.php.dist config/conf.php
-# Review config/conf.php and set values accordingly.
+```
+
+Then review config/conf.php and set values accordingly.
+
+Per-directory configurations are possible too. Just add a .horde-git-tools.php
+file in the base directory of a (planned) Git checkout and set any
+configuration items there that you like to overwrite from the default global
+configuration. E.g. to use a different webroot to run different Horde versions
+in parallel:
+
+```php
+<?php
+// Secondary directory for git checkouts.
+$conf['git_base'] = '/home/user/horde5';
+
+// Secondary target webroot for the installation.
+$conf['web_base'] = '/var/www/horde5';
 ```
 
 Usage
