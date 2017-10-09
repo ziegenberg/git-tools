@@ -51,7 +51,7 @@ class Dev extends Base
         switch (array_shift($arguments)) {
         case 'install':
             $this->_doInstallDev();
-            break;
+            return true;
         }
     }
 
@@ -79,7 +79,7 @@ class Dev extends Base
         $action->run();
     }
 
-/** Horde_Cli_Modular methods */
+    /* Horde_Cli_Modular methods */
 
     public function getOptionGroupOptions($action = null)
     {

@@ -84,7 +84,7 @@ class Help extends Base
             );
         }
 
-        return true;
+        return false;
     }
 
     /**
