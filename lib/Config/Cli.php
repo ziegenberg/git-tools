@@ -37,7 +37,8 @@ class Cli extends \Components_Config_Base
      * Constructor.
      *
      */
-    public function __construct(Horde_Argv_Parser $parser) {
+    public function __construct(Horde_Argv_Parser $parser)
+    {
         $this->_parser = $parser;
 
         $parser->addOption(
