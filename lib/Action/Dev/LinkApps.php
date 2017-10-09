@@ -94,10 +94,12 @@ class LinkApps extends \Horde\GitTools\Action\Base
                 . $horde_git . '/' . $app
             );
         }
-        file_put_contents(
-            $horde_git . '/' . $app . '/config/horde.local.php',
-            '<?php define(\'HORDE_BASE\', \'' . $web_dir . '\');'
-        );
+        if (is_dir($horde_git . '/' . $app . '/config')) {
+            file_put_contents(
+                $horde_git . '/' . $app . '/config/horde.local.php',
+                '<?php define(\'HORDE_BASE\', \'' . $web_dir . '\');'
+            );
+        }
     }
 
 }
