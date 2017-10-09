@@ -46,6 +46,7 @@ class EmptyLinkedDirectory extends \Horde\GitTools\Action\Base
         $this->_dependencies->getOutput()->info("EMPTYING old web directory $web_dir");
         try {
             $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($web_dir), \RecursiveIteratorIterator::CHILD_FIRST);
+            $it->rewind();
         } catch (\UnexpectedValueException $e) {
             $this->_dependencies->getOutput()->info('Old web directory not found. Creating it.');
             mkdir($web_dir);
