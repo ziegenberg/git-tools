@@ -50,7 +50,9 @@
         "optimize-autoloader": true
     },
     "scripts": {
-        "post-install-cmd": "Horde\\GitTools\\Callbacks::linkHordeRole",
-        "post-update-cmd": "Horde\\GitTools\\Callbacks::linkHordeRole"
+        "post-package-install": "Horde\\GitTools\\Callbacks::linkHordeRole",
+        "pre-package-update": "Horde\\GitTools\\Callbacks::unlinkHordeRole",
+        "post-package-update": "Horde\\GitTools\\Callbacks::linkHordeRole",
+        "pre-package-uninstall": "Horde\\GitTools\\Callbacks::unlinkHordeRole"
     }
 }
