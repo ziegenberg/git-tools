@@ -60,8 +60,14 @@ abstract class Base extends \Horde\GitTools\Action\Base
             ? explode(',', $this->_params['repositories'])
             : array();
 
-        return !$it->isDot() && $it->isDir() && is_dir($it->getPathname() . '/.git')
-            && (empty($repositories) || (in_array($it->getFilename(), $repositories)));
+        if ($it instanceof DirectoryIterator) {
+            return !$it->isDot() && $it->isDir() &&
+                is_dir($it->getPathname() . '/.git') &&
+                (empty($repositories) ||
+                 (in_array($it->getFilename(), $repositories)));
+        }
+        return $it[0] != '.' && is_dir($it) && is_dir($it . '/.git') &&
+            (empty($repositories) || (in_array(basename($it), $repositories)));
     }
 
 }
