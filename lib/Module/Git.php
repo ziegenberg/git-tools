@@ -180,28 +180,6 @@ class Git extends Base
     }
 
     /**
-     * Get a list of all available repositories from the Github remote.
-     *
-     * @param  array $params  Configuration parameters.
-     *
-     * @return  Horde\GitTools\Repositories\Http
-     */
-    protected function _getRepositories()
-    {
-        if (!empty($this->_params['cache'])) {
-            $storage = new Storage_File();
-            $cache = new Cache($storage);
-        }
-        $repositories = new Repositories\Http($this->_params, $cache);
-        $repositories->load(array(
-            'org' => $params['org'],
-            'user-agent' => self::USERAGENT)
-        );
-
-        return $repositories;
-    }
-
-    /**
      * Return whether or not the specified package is an application.
      * For now, this is true if the package name starts with a lower case
      * letter.
