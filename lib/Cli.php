@@ -42,6 +42,7 @@ class Cli
     {
         // Setup the modular cli.
         $dependencies = new Injector();
+        $dependencies->setInstance('Horde_Cli', new \Horde_Cli(array('pager' => true)));
         $modular = self::_prepareModular($dependencies);
         $parser = $modular->createParser();
         $dependencies->setParser($parser);
