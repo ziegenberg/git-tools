@@ -17,6 +17,7 @@ use Horde\GitTools\Action;
 use Horde\GitTools\Action\Git\Checkout;
 use Horde\GitTools\Action\Git\CloneRepositories;
 use Horde\GitTools\Action\Git\Command;
+use Horde\GitTools\Action\Git\Diff;
 use Horde\GitTools\Action\Git\ListRemote;
 use Horde\GitTools\Action\Git\Pull;
 use Horde\GitTools\Action\Git\Status;
@@ -58,32 +59,34 @@ class Git extends Base
             return false;
         }
 
-
         switch (array_shift($arguments)) {
-        case 'clone':
-            $this->_doClone();
-            break;
-        case 'pull':
-            $this->_doPull();
-            break;
         case 'checkout':
             if (!$branch = array_shift($arguments)) {
                 throw new Exception('Missing required arguemnts to checkout.');
             }
             $this->_doCheckout($branch);
-            break;
-        case 'status':
-            $this->_doStatus();
-            break;
-        case 'run':
-            $this->_doCmd($arguments);
-            break;
+            return true;
+        case 'clone':
+            $this->_doClone();
+            return true;
+        case 'diff':
+            $this->_doDiff();
+            return true;
         case 'list':
             $this->_doList();
-            break;
+            return true;
+        case 'pull':
+            $this->_doPull();
+            return true;
+        case 'run':
+            $this->_doCmd($arguments);
+            return true;
+        case 'status':
+            $this->_doStatus();
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     /**
@@ -102,6 +105,17 @@ class Git extends Base
         foreach ($repositories as $package) {
             $action->run($package->name, $this->_isApplication($package->name));
         }
+    }
+
+    /**
+     * Report diff of all repositories.
+     *
+     * @param  array $params  Configuration parameters.
+     */
+    protected function _doDiff()
+    {
+        $action = new Diff($this->_params, $this->_dependencies);
+        $action->run();
     }
 
     /**
@@ -300,6 +314,7 @@ class Git extends Base
             'pull'                => 'Update local repositories.',
             'checkout [BRANCH]'   => 'Checkout BRANCH on all local repositories.',
             'status'              => 'Display status of all local repositories.',
+            'diff'                => 'Display a diff of all local repositories.',
             'run ["GIT COMMAND"]' => 'Run [GIT COMMAND] on all local repositories.'
         );
     }
