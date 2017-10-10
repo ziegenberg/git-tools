@@ -31,23 +31,37 @@ class Status extends Base
      * Outputs status of all available locally checkout out repositories.
      *
      * @param  string  $package  The repository name.
-     * @todo  Use --porcelain output, parse into array, and output cleaner data.
      */
     public function run()
     {
         // Ensure the base directory exists.
         if (!strlen($this->_params['git_base']) ||
             !file_exists($this->_params['git_base'])) {
-            throw new Exception("Target directory for git checkouts does not exist.");
+            throw new Exception(
+                "Target directory for git checkouts does not exist."
+            );
         }
 
-        $this->_dependencies->getOutput()->info('Checking status of repositories.');
-        foreach (new \DirectoryIterator($this->_params['git_base']) as $it) {
-            if ($this->_includeRepository($it)) {
-                $results = $this->_callGit('status --porcelain -b', $it->getPathname());
-                $this->_dependencies->getOutput()->info('Status of ' . $it->getFileName());
-                $this->_dependencies->getOutput()->info($results[0]);
+        $this->_dependencies->getOutput()
+            ->yellow('Checking status of repositories.');
+        foreach (scandir($this->_params['git_base']) as $dir) {
+            if (!$this->_includeRepository($this->_params['git_base'] . '/' . $dir)) {
+                continue;
             }
+            $results = $this->_callGit(
+                'status --porcelain',
+                $this->_params['git_base'] . '/' . $dir
+            );
+            if (!$results[0]) {
+                continue;
+            }
+            $results = $this->_callGit(
+                '-c color.ui=always status',
+                $this->_params['git_base'] . '/' . $dir
+            );
+            $this->_dependencies->getOutput()->plain('');
+            $this->_dependencies->getOutput()->blue('Status of ' . $dir);
+            $this->_dependencies->getOutput()->plain($results[0]);
         }
     }
 
