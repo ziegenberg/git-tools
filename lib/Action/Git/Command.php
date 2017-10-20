@@ -48,24 +48,25 @@ class Command extends Base
         }
 
         $this->_dependencies->getOutput()->info('Handling git command.');
-        foreach (new \DirectoryIterator($this->_params['git_base']) as $it) {
-            if ($this->_includeRepository($it)) {
-                foreach ($commands as $cmd) {
-                    if (empty($this->_params['quiet'])) {
-                        $this->_dependencies->getOutput()->plain(
-                            '   >>>GIT COMMAND: ' . $cmd
-                        );
-                    }
-                    $results[$it->getFilename()] = $this->_callGit($cmd, $it->getPathname());
-
-                    if (empty($this->_params['quiet'])) {
-                        $this->_dependencies->getOutput()->plain(
-                            '   >>>RESULTS: ' . implode("\n", $results[$it->getFilename()])
-                        );
-                    }
-
-                    $this->_dependencies->getOutput()->ok('Repository: ' . $it->getFilename() . ' completed.');
+        foreach (scandir($this->_params['git_base']) as $dir) {
+            if (!$this->_includeRepository($dir)) {
+                continue;
+            }
+            foreach ($commands as $cmd) {
+                if (empty($this->_params['quiet'])) {
+                    $this->_dependencies->getOutput()->plain(
+                        '   >>>GIT COMMAND: ' . $cmd
+                    );
                 }
+                $results[$dir] = $this->_callGit($cmd, $this->_params['git_base'] . '/' . $dir);
+
+                if (empty($this->_params['quiet'])) {
+                    $this->_dependencies->getOutput()->plain(
+                        '   >>>RESULTS: ' . implode("\n", $results[$dir])
+                    );
+                }
+
+                $this->_dependencies->getOutput()->ok('Repository: ' . $dir . ' completed.');
             }
         }
 

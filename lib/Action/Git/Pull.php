@@ -48,26 +48,28 @@ class Pull extends Base
         }
 
         $this->_dependencies->getOutput()->info('Starting update of repositories.');
-        foreach (new \DirectoryIterator($this->_params['git_base']) as $it) {
-            if ($this->_includeRepository($it)) {
-                // Debug output
-                if ($this->_params['verbose']) {
-                    $this->_dependencies->getOutput()->plain(
-                        '    >>>GIT COMMAND: ' . $this->_getCommand()
-                    );
-                }
-
-                // Perform pull
-                $results[$it->getFilename()] = $this->_callGit($this->_getCommand(), $it->getPathname());
-
-                // Debug output
-                if ($this->_params['verbose']) {
-                    $this->_dependencies->getOutput()->plain(
-                        '   >>>RESULTS: ' . implode("\n", $results[$it->getFilename()])
-                    );
-                }
-                $this->_dependencies->getOutput()->ok('Repository: ' . $it->getFilename());
+        foreach (scandir($this->_params['git_base']) as $dir) {
+            if (!$this->_includeRepository($dir)) {
+                continue;
             }
+
+            // Debug output
+            if ($this->_params['verbose']) {
+                $this->_dependencies->getOutput()->plain(
+                    '    >>>GIT COMMAND: ' . $this->_getCommand()
+                );
+            }
+
+            // Perform pull
+            $results[$dir] = $this->_callGit($this->_getCommand(), $this->_params['git_base'] . '/' . $dir);
+
+            // Debug output
+            if ($this->_params['verbose']) {
+                $this->_dependencies->getOutput()->plain(
+                    '   >>>RESULTS: ' . implode("\n", $results[$dir])
+                );
+            }
+            $this->_dependencies->getOutput()->ok('Repository: ' . $dir);
         }
 
         if (!empty($failures)) {
