@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "46af83bf40748771f8fe56f2e1235ae9",
+    "hash": "33f18609f3cf8265db603fee70a98336",
     "content-hash": "713a30caa251484da70328f063a3f4cf",
     "packages": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/horde/components.git",
-                "reference": "c908aaf9efb1009d4f40140031feaf95d8920c30"
+                "reference": "c64cc1af0e80199bbde826e547bbc913b7a4c3ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/horde/components/zipball/c908aaf9efb1009d4f40140031feaf95d8920c30",
-                "reference": "c908aaf9efb1009d4f40140031feaf95d8920c30",
+                "url": "https://api.github.com/repos/horde/components/zipball/c64cc1af0e80199bbde826e547bbc913b7a4c3ed",
+                "reference": "c64cc1af0e80199bbde826e547bbc913b7a4c3ed",
                 "shasum": ""
             },
             "require": {
@@ -69,7 +69,7 @@
             "support": {
                 "source": "https://github.com/horde/components/tree/master"
             },
-            "time": "2017-09-07 13:25:14"
+            "time": "2017-10-17 20:33:49"
         },
         {
             "name": "pear-pear.horde.org/Horde_Alarm",
@@ -1269,10 +1269,10 @@
         },
         {
             "name": "pear-pear.horde.org/Horde_Prefs",
-            "version": "2.8.1",
+            "version": "2.9.0",
             "dist": {
                 "type": "file",
-                "url": "https://pear.horde.org/get/Horde_Prefs-2.8.1.tgz",
+                "url": "https://pear.horde.org/get/Horde_Prefs-2.9.0.tgz",
                 "reference": null,
                 "shasum": null
             },
@@ -1286,7 +1286,7 @@
                 "php": "<8.0.0.0"
             },
             "replace": {
-                "pear-horde/horde_prefs": "== 2.8.1.0"
+                "pear-horde/horde_prefs": "== 2.9.0.0"
             },
             "type": "pear-library",
             "autoload": {
@@ -1369,10 +1369,10 @@
         },
         {
             "name": "pear-pear.horde.org/Horde_Rpc",
-            "version": "2.1.7",
+            "version": "2.1.8",
             "dist": {
                 "type": "file",
-                "url": "https://pear.horde.org/get/Horde_Rpc-2.1.7.tgz",
+                "url": "https://pear.horde.org/get/Horde_Rpc-2.1.8.tgz",
                 "reference": null,
                 "shasum": null
             },
@@ -1389,7 +1389,7 @@
                 "php": "<8.0.0.0"
             },
             "replace": {
-                "pear-horde/horde_rpc": "== 2.1.7.0"
+                "pear-horde/horde_rpc": "== 2.1.8.0"
             },
             "type": "pear-library",
             "autoload": {
@@ -1502,10 +1502,10 @@
         },
         {
             "name": "pear-pear.horde.org/Horde_Share",
-            "version": "2.1.2",
+            "version": "2.2.0",
             "dist": {
                 "type": "file",
-                "url": "https://pear.horde.org/get/Horde_Share-2.1.2.tgz",
+                "url": "https://pear.horde.org/get/Horde_Share-2.2.0.tgz",
                 "reference": null,
                 "shasum": null
             },
@@ -1521,7 +1521,7 @@
                 "php": "<8.0.0.0"
             },
             "replace": {
-                "pear-horde/horde_share": "== 2.1.2.0"
+                "pear-horde/horde_share": "== 2.2.0.0"
             },
             "type": "pear-library",
             "autoload": {
