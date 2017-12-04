@@ -44,24 +44,26 @@ class Status extends Base
 
         $this->_dependencies->getOutput()
             ->yellow('Checking status of repositories.');
+        $allResults = array();
         foreach (scandir($this->_params['git_base']) as $dir) {
             if (!$this->_includeRepository($this->_params['git_base'] . '/' . $dir)) {
-                continue;
-            }
-            $results = $this->_callGit(
-                'status --porcelain',
-                $this->_params['git_base'] . '/' . $dir
-            );
-            if (!$results[0]) {
                 continue;
             }
             $results = $this->_callGit(
                 '-c color.ui=always status',
                 $this->_params['git_base'] . '/' . $dir
             );
+            if (!isset($allResults[$results[0]])) {
+                $allResults[$results[0]] = array();
+            }
+            $allResults[$results[0]][] = $dir;
+        }
+        foreach ($allResults as $result => $components) {
             $this->_dependencies->getOutput()->plain('');
-            $this->_dependencies->getOutput()->blue('Status of ' . $dir);
-            $this->_dependencies->getOutput()->plain($results[0]);
+            $this->_dependencies->getOutput()->blue(
+                'Status of ' . implode(', ', $components) . ':'
+            );
+            $this->_dependencies->getOutput()->plain($result);
         }
     }
 
