@@ -49,7 +49,7 @@ class Pull extends Base
 
         $this->_dependencies->getOutput()->info('Starting update of repositories.');
         foreach (scandir($this->_params['git_base']) as $dir) {
-            if (!$this->_includeRepository($dir)) {
+            if (!$this->_includeRepository($this->_params['git_base'] . '/' . $dir)) {
                 continue;
             }
 
