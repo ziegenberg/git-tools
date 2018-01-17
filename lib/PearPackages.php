@@ -95,7 +95,7 @@ class PearPackages
     {
         $results = $this->_pearPkgOb->fromPackageFile($package_xml, 0);
         if ($results instanceof PEAR_Error) {
-            throw new Exception($e->getMessage());
+            throw new Exception($results->getMessage());
         }
 
         return $results;
