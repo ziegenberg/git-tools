@@ -85,7 +85,7 @@ class LinkFramework extends \Horde\GitTools\Action\Base
 
             // Get list of files
             $pear = $pkg_ob->getPearPackage($val . '/package.xml');
-            if ($pear instanceof PEAR_Error) {
+            if ($pear instanceof \PEAR_Error) {
                 throw new Exception($pear->getMessage());
             }
             $file_list = $pear->getInstallationFileList();
