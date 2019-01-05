@@ -49,7 +49,7 @@ class Command extends Base
 
         $this->_dependencies->getOutput()->info('Handling git command.');
         foreach (scandir($this->_params['git_base']) as $dir) {
-            if (!$this->_includeRepository($dir)) {
+            if (!$this->_includeRepository($this->_params['git_base'] . '/' . $dir)) {
                 continue;
             }
             foreach ($commands as $cmd) {
